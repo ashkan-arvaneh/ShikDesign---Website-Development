@@ -7,7 +7,9 @@
   </div>
 </template>
 
-<style>
+<style lang="scss" scoped>
+  @import '~@/assets/scss/settings/variables.scss';
+  @import '~@/assets/scss/tools/mixins.scss';
 .VueToNuxtLogo
 {
   display: inline-block;
@@ -31,6 +33,7 @@
   border-left: 105px solid transparent;
   border-right: 105px solid transparent;
   border-bottom: 180px solid #41B883;
+  //background-color: $blue;
 }
 .Triangle--two
 {

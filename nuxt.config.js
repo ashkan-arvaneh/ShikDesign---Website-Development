@@ -1,3 +1,21 @@
+/*
+const resolve = require('path').resolve
+
+const isVueRule = (rule) => {
+  return rule.test.toString() === '/\\.vue$/'
+}
+const isSASSRule = (rule) => {
+  return ['/\\.sass$/', '/\\.scss$/'].indexOf(rule.test.toString()) !== -1
+}
+const sassResourcesLoader = {
+  loader: 'sass-resources-loader',
+  options: {
+    resources: [
+      resolve(__dirname, 'assets/scss/settings/variables.scss')
+    ]
+  }
+}*/
+
 module.exports = {
   /*
   ** Headers of the page
@@ -18,6 +36,10 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+  ** Sass compiler
+  */
+  css: ['~/assets/scss/main.scss'],
+  /*
   ** Build configuration
   */
   build: {
@@ -25,6 +47,17 @@ module.exports = {
     ** Run ESLINT on save
     */
     extend (config, ctx) {
+      /*config.module.rules.forEach((rule) => {y
+        if (isVueRule(rule)) {
+          rule.query.loaders.scss.pop()
+          rule.query.loaders.scss.push(sassResourcesLoader)
+        }
+        if (isSASSRule(rule)) {
+          rule.use.pop()
+          rule.use.push(sassResourcesLoader)
+        }
+        console.log(config)
+      })*/
       if (ctx.dev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -33,6 +66,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      
     }
   }
 }
